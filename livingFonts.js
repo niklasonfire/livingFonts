@@ -61,4 +61,5 @@ function fillwordsRaw() {
   for (var i = 0; i < words.length; i++) {
     words[i] = words[i].trim();
   }
+  console.log(words);
 }
