@@ -1,28 +1,29 @@
-var smilie;
 var words;
 var textInput;
 var textField;
 var enthalten;
 var word;
+var inpWords;
 var list;
-var v;
+var weight;
+
 
 function setup() {
   noCanvas();
   textInput = createInput();
   textField = createP();
+
   fillwordsRaw();
   textField.style("font-family", "myFont");
   textField.style("font-size", 40);
   textField.style("transition", "all 2s");
   textInput.input(getInput);
-
+  weight = 150;
 
 }
 
 
 function draw() {
-
 
   if (containsWord()) {
     v = 150;
@@ -32,20 +33,19 @@ function draw() {
     textField.style("font-variation-settings", "'wght'" + v);
   }
 
-}
 
+}
 
 function getInput() {
   textField.html(textInput.value());
-
-
 }
 
 function containsWord() {
-  var i;
-  for (i = 0; i < words.length; i++) {
-    if (textInput.value().includes(words[i])) {
-      return true
+
+  inpWords = textInput.value().split(" ");
+  for (var i = 0; i < words.length; i++) {
+    if (words[i] === inpWords[inpWords.length-1]) {
+      return true;
     }
   }
 
@@ -61,5 +61,5 @@ function fillwordsRaw() {
   for (var i = 0; i < words.length; i++) {
     words[i] = words[i].trim();
   }
-  console.log(words);
+
 }
