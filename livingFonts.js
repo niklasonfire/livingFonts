@@ -2,11 +2,11 @@ var textInput;
 var textField;
 var enthalten;
 var badWords;
-var inpWords;
+//var inpWords;
 var list;
 var weight;
 var m;
-
+var contains;
 function setup() {
   createCanvas(windowWidth,windowHeight);
   background(255,230,230);
@@ -44,7 +44,7 @@ function setup() {
   fillwordsRaw();
   textField.style("font-family", "myFont");
   textField.style("font-size", 40);
-  textField.style("transition", "all 2s");
+  textField.style("transition", "all 1s");
 //  textField.position(windowWidth/4+5,windowHeight/4);
 
 
@@ -52,13 +52,14 @@ function setup() {
   m=0;
   list = [];
   v=200;
+
 }
 
 
 function draw() {
 
   if (containsWord()) {
-    v = 200-list.length*10
+    v = 200-list.length*10;
     textField.style("font-variation-settings", "'wght'" + v);
   } else {
 
@@ -75,20 +76,23 @@ function getInput() {
 
 
 function containsWord() {
-  inpWords = textInput.value().split(" ");
 
+  var inpWords = textInput.value().split(' ');
+  var lastWord = inpWords[inpWords.length-2];
 
-  for(var i = 0; i < inpWords.length; i++) {
     for(var j = 0;j<badWords.length;j++){
-      if ( badWords[j]===inpWords[i] && inpWords[i]!=list[i]) {
-      list[m++] = inpWords[i];
-      return true;
-      }
-    }
-  }
+      if(lastWord === badWords[j]){
+            if(list[list.length-1] !=lastWord){
+            list[m++]=lastWord;
+            return true;
+          }
+          }
+        }
 
   return false;
 }
+
+
 
 function resetAll(){
   location.reload();
