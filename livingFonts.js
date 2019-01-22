@@ -1,12 +1,11 @@
 var textInput;
 var textField;
-var enthalten;
 var badWords;
-//var inpWords;
 var list;
-var weight;
 var m;
 var contains;
+
+
 function setup() {
   createCanvas(windowWidth,windowHeight);
   background(255,230,230);
@@ -41,6 +40,7 @@ function setup() {
   //textDiv.style("width","100px");
   textDiv.position(windowWidth/4+5,windowHeight/4+30);
   textDiv.style("width","50%");
+
   fillwordsRaw();
   textField.style("font-family", "myFont");
   textField.style("font-size", 40);
